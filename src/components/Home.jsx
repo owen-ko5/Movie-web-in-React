@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import MovieContainer from './MovieContainer';
 
@@ -14,6 +14,7 @@ const Home = () => {
       const res = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`);
       const data = await res.json();
       setMovies(data.results);
+      setError("");
     } catch {
       setError("Failed to load trending movies.");
     }
@@ -27,16 +28,14 @@ const Home = () => {
       const res = await fetch(url);
       const data = await res.json();
       setMovies(data.results);
+      setError("");
     } catch {
       setError(`Failed to load ${category}.`);
     }
   };
 
   const searchMovies = async () => {
-    if (!searchQuery.trim()) {
-      fetchTrending();
-      return;
-    }
+    if (!searchQuery.trim()) return;
     try {
       const res = await fetch(
         `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(searchQuery)}&page=1`
@@ -46,17 +45,13 @@ const Home = () => {
         setError("No results found.");
         setMovies([]);
       } else {
-        setError("");
         setMovies(data.results);
+        setError("");
       }
     } catch {
       setError("Search failed. Please try again.");
     }
   };
-
-  useEffect(() => {
-    fetchTrending();
-  }, []);
 
   return (
     <div className="App">
@@ -67,10 +62,19 @@ const Home = () => {
         onCategoryClick={fetchCategory}
         onTrendingClick={fetchTrending}
       />
+
       <a href="/" className="back-btn">Back to Home</a>
+
+      {movies.length === 0 && !error && (
+        <div className="landing-message">
+          <h2>Welcome to EUTOPIA!</h2>
+          <p>Click "Trending" to explore movies.</p>
+        </div>
+      )}
+
       <div id="movie-container">
         {error && <h3>{error}</h3>}
-        {!error && <MovieContainer movies={movies} />}
+        {!error && movies.length > 0 && <MovieContainer movies={movies} />}
       </div>
     </div>
   );
