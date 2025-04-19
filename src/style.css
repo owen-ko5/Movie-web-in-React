@@ -1,10 +1,8 @@
-/* Global Reset & Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background: url("https://img.freepik.com/free-vector/shiny-film-negative-cinema-background-with-text-space_1017-52787.jpg?t=st=1742994211~exp=1742997811~hmac=369a928fb5d3d6b42497ef13f92ba6be3fd2362ab5efd3c31d6090c80e22c50a&w=996") center/cover no-repeat fixed;
   color: #1AE6DB;
@@ -14,8 +12,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-/* Header */
 header {
   background: rgba(0, 0, 0, 0.7);
   padding: 2rem 1rem;
@@ -23,15 +19,12 @@ header {
   color: #07F0C9;
   box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
-
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
-/* Search */
 .search-container {
   display: flex;
   justify-content: center;
@@ -62,7 +55,6 @@ header h1 {
   background-color: #05c3a7;
 }
 
-/* Category Buttons */
 .category-buttons {
   display: flex;
   justify-content: center;
@@ -86,7 +78,6 @@ header h1 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-/* Back Button */
 .back-btn {
   align-self: flex-start;
   margin: 1rem 2rem;
@@ -100,7 +91,6 @@ header h1 {
   color: #1aaa08;
 }
 
-/* Movie Grid */
 #movie-container {
   flex: 1;
   display: grid;
@@ -108,8 +98,6 @@ header h1 {
   gap: 1.5rem;
   padding: 2rem;
 }
-
-/* Movie Card */
 .movie-card {
   background: rgba(0, 0, 0, 0.75);
   border-radius: 12px;
@@ -153,7 +141,6 @@ header h1 {
   text-overflow: ellipsis;
 }
 
-/* Responsive Tweaks */
 @media (max-width: 600px) {
   header h1 {
     font-size: 2rem;
