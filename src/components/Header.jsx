@@ -4,7 +4,7 @@ import CategoryButtons from './CategoryButtons';
 
 const Header = ({ searchQuery, onSearchChange, onSearch, onCategoryClick, onTrendingClick }) => (
   <header>
-    <h1>🎬EUTOPIA🎬🎥🔥</h1>
+    <h1>🎬UTOPIA🎬🎥🔥</h1>
     <SearchBar
       searchTerm={searchQuery}
       onSearchChange={onSearchChange}
